@@ -28,7 +28,7 @@ public class LogEntry {
         this.pid = pid;
         //this.startTime = LocalTime.parse(startTime);
         this.description = description;
-        //determine if the type of the log entry (Task OR Job)
+        //determine the type of the log entry (Task OR Job)
         this.entryType = description.contains("task") ? "task" : "job";
     }
 
@@ -44,7 +44,20 @@ public class LogEntry {
         return containsWarningOrError;
     }
 
+    public String getEntryType() {
+        return entryType;
+    }
+
+    public Duration getDuration() {
+        return duration;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
     //Sets log entry duration
+    //firstLogTime and lastLogTime correspond to the first, and last entries from logs.log file. Helps if an entry has no start or end time
     public void logDuration(String firstLogTime, String lastLogTime) {
         if (startTime != null && endTime != null) {
             calculateLogDuration(startTime, endTime);

@@ -57,6 +57,7 @@ public class Main {
         }
 
         //Calculate task duration for each task
+        //firstLogTime and lastLogTime will be used only if a job/task has no START or END defined
         for (LogEntry entry : logsMap.values()) {
             entry.logDuration(firstLogTime, lastLogTime);
         }
